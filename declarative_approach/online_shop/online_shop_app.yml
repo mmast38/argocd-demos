@@ -10,7 +10,14 @@ spec:
     targetRevision: main
     path: declarative_approach/online_shop
   destination:
-    server: https://172.31.3.226:33893  # Replace with your Cluster Url, To get run: `argocd cluster list`
+    server: argocd app create apache-app \
+  --repo https://github.com/mmast38/argocd-demos.git \
+  --path cli_approach/apache \
+  --dest-server https://172.31.6.98:33893\
+  --dest-namespace default \
+  --sync-policy automated \
+  --self-heal \
+  --auto-prune # Replace with your Cluster Url, To get run: `argocd cluster list`
     namespace: default
   syncPolicy:
     automated:
